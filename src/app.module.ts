@@ -10,6 +10,8 @@ import { LoggerModule } from 'nestjs-pino';
 import { ScheduleModule } from '@nestjs/schedule';
 
 import { IngestScheduler } from './schedules/ingest.scheduler';
+import { AppService } from './app.service';
+import { AppController } from './app.controller';
 
 @Module({
   imports: [
@@ -34,6 +36,9 @@ import { IngestScheduler } from './schedules/ingest.scheduler';
     EmployeesModule,
     ReportsModule,
   ],
-  providers: [IngestScheduler],
+  controllers: [
+    AppController
+  ],
+  providers: [IngestScheduler, AppService],
 })
 export class AppModule { }
