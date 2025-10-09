@@ -14,7 +14,7 @@ export class IngestScheduler {
   ) {}
 
   // every minute (adjust as needed)
-  @Cron(CronExpression.EVERY_MINUTE)
+  @Cron(CronExpression.EVERY_30_MINUTES)
   async tick() {
     try {
       this.logger.log('scheduler: employees sync…');

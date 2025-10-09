@@ -6,6 +6,8 @@ export function setupSwagger(app: INestApplication) {
     .setTitle('UKG Internal API')
     .setDescription('API docs for ukg-internal')
     .setVersion('1.0.0')
+    .addServer('http://172.16.10.2:9091')
+    .addServer('http://172.16.10.2:9091/api')
     .build();
 
   const doc = SwaggerModule.createDocument(app, cfg);
