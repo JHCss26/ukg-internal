@@ -1,10 +1,13 @@
-import { Column, Entity, PrimaryGeneratedColumn, Index } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, Index, CreateDateColumn } from 'typeorm';
 
 @Entity({ name: 'employees_reports' }) // your table name
 @Index(['settingId'])
 export class EmployeeReport {
   @PrimaryGeneratedColumn({ name: 'id', type: 'int' })
   id!: number;
+
+  @Column({name:'shift_date', type: 'date' })
+  shiftDate!: string;
 
   @Column({ name: 'setting_id', type: 'int' })
   settingId!: number;
@@ -78,6 +81,6 @@ export class EmployeeReport {
   @Column({ name: 'comments', type: 'nvarchar', length: 1000, nullable: true })
   comments!: string | null;
 
-  @Column({ name: 'created_at', type: 'datetime2', default: () => 'SYSUTCDATETIME()' })
+  @CreateDateColumn({ name: 'created_at', type: 'datetime2', default: () => 'SYSUTCDATETIME()' })
   createdAt!: Date;
 }

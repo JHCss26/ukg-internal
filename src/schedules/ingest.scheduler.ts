@@ -14,7 +14,7 @@ export class IngestScheduler {
   ) {}
 
   // every minute (adjust as needed)
-  @Cron(CronExpression.EVERY_30_MINUTES)
+  @Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)
   async tick() {
     try {
       this.logger.log('scheduler: employees sync…');
@@ -35,7 +35,7 @@ export class IngestScheduler {
 
     try {
       this.logger.log(`scheduler: report ${settingId}…`);
-      await this.reports.runAndStore(settingId, body);
+      await this.reports.runAndStore(settingId);
     } catch (e) {
       this.logger.error('report ingest failed', e as any);
     }
